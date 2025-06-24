@@ -21,4 +21,11 @@
         </where>
         order by d.create_time desc  # 按创建时间降序排序
     </select>
+
+    <delete id="deleteByIds" parameterType="java.lang.Long">
+        delete from dish where id in
+            <foreach collection="ids" open="(" separator="," close=")" item="id">
+                #{id}
+            </foreach>
+    </delete>
 </mapper>

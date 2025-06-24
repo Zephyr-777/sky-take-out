@@ -12,6 +12,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 @Mapper
 public interface DishMapper {
 
@@ -40,7 +42,7 @@ public interface DishMapper {
     Page<DishVO> pageQuery(DishPageQueryDTO dishPageQueryDTO);
 
     /**
-     * 根据主键删除菜品数据
+     * 根据主键查询菜品数据
      *
      * @param id 菜品ID
      */
@@ -48,11 +50,17 @@ public interface DishMapper {
     Dish getById(Long id);
 
     /**
-     * 根据主键查询菜品
+     * 根据主键删除菜品
      *
      * @param id 菜品ID
      * @return 菜品实体
      */
     @Delete("delete from dish where id =#{id}")
     void deleteById(Long id);
+
+    /**
+     * 根据ids集合批量删除菜品
+     * @param ids 菜品实体
+     */
+    void deleteByIds(List<Long> ids);
 }
