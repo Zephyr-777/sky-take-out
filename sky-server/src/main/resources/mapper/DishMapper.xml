@@ -8,4 +8,17 @@
             values
         (#{name}, #{categoryId}, #{price}, #{image}, #{description}, #{createTime}, #{createUser}, #{updateTime}, #{updateUser},#{status})
     </insert>
+
+    <select id="pageQuery" resultType="com.sky.vo.DishVO">
+        select d.* , c.name as categoryName from dish d left  outer join category c on d.category_id = c.id
+        <where>
+            <if test ="name != null">
+                and d.name like concat('%',#{name},'%')
+            </if>
+            <if test ="status != null">
+                and d.status = #{status} # 根据状态查询
+            </if>
+        </where>
+        order by d.create_time desc  # 按创建时间降序排序
+    </select>
 </mapper>
