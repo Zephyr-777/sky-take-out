@@ -1,0 +1,8 @@
+sky:
+  datasource:
+    driver-class-name: ${SKY_DATASOURCE_DRIVER_CLASS_NAME}
+    host: ${SKY_DATASOURCE_HOST}
+    port: ${SKY_DATASOURCE_PORT}
+    database: ${SKY_DATASOURCE_DATABASE}
+    username: ${SKY_DATASOURCE_USERNAME}
+    password: ${SKY_DATASOURCE_PASSWORD}
